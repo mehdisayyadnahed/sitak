@@ -1,9 +1,11 @@
+<div align="center">
 # سای‌تک | SiTak
 
 پلتفرم مدرن، سبک و جامع فروشگاهی، محتوایی و تعاملی (گیمیفیکیشن) بر پایه PHP و MySQL با رابط کاربری App-Like و بدون وابستگی به فریم‌ورک‌های سنگین.
 
   <img src="/images/Screenshot_2.png" alt="Universal File Server Screenshot 2" width="400" />
   <img src="/images/Screenshot_1.png" alt="Universal File Server Screenshot 1" width="400" />
+</div>
 ---
 
 ## فهرست مطالب
