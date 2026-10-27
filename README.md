@@ -2,8 +2,8 @@
 
 پلتفرم مدرن، سبک و جامع فروشگاهی، محتوایی و تعاملی (گیمیفیکیشن) بر پایه PHP و MySQL با رابط کاربری App-Like و بدون وابستگی به فریم‌ورک‌های سنگین.
 
-> 🤖 **توسعه‌یافته با هوش مصنوعی:** تمامی بخش‌های این سامانه اعم از منطق بک‌اند، رابط کاربری، موتورهای صوتی/تصویری و لایه‌های امنیتی با همراهی و کمک مدل‌های هوش مصنوعی (AI) طراحی و پیاده‌سازی شده است.
-
+  <img src="/images/Screenshot_2.png" alt="Universal File Server Screenshot 2" width="400" />
+  <img src="/images/Screenshot_1.png" alt="Universal File Server Screenshot 1" width="400" />
 ---
 
 ## فهرست مطالب
@@ -148,14 +148,14 @@
    پس از اتمام مراحل، فایل امنیتی `install.lock` در ریشه پروژه ایجاد شده و دسترسی به فایل نصب مسدود می‌گردد. اکنون می‌توانید با مراجعه به `admin.php` به پیشخوان مدیریت وارد شوید.
 
 ---
+> 🤖 **توسعه‌یافته با هوش مصنوعی:** تمامی بخش‌های این سامانه اعم از منطق بک‌اند، رابط کاربری، موتورهای صوتی/تصویری و لایه‌های امنیتی با همراهی و کمک مدل‌های هوش مصنوعی (AI) طراحی و پیاده‌سازی شده است.
+---
 
 <div id="english-documentation"></div>
 
 # SiTak (English Documentation)
 
 A modern, lightweight, standalone e-commerce, content management, and gamification platform crafted with native PHP and pure web technologies.
-
-> 🤖 **Developed with AI Assistance:** This platform and all its core modules (backend workflows, frontend UX, procedural audio/visual interactive engines, and security subsystems) were engineered with the aid of Artificial Intelligence (AI) models.
 
 ---
 
@@ -279,6 +279,8 @@ A modern, lightweight, standalone e-commerce, content management, and gamificati
 5. **Lock Down:**
    The installation wizard creates an `install.lock` file upon completion to prevent replay attacks. Log into your dashboard using `admin.php`.
 
+---
+> 🤖 **Developed with AI Assistance:** This platform and all its core modules (backend workflows, frontend UX, procedural audio/visual interactive engines, and security subsystems) were engineered with the aid of Artificial Intelligence (AI) models.
 ---
 
 ## License
