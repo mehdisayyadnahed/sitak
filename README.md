@@ -28,6 +28,39 @@
 
 ---
 
+### 🛠️ فناوری‌ها و زیرساخت‌های استفاده‌شده
+
+#### هسته و پایگاه‌داده (Backend & Database)
+![PHP](https://img.shields.io/badge/PHP_8+-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
+
+#### رابط کاربری و وب (Frontend & Web APIs)
+![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3_Modern-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA_Ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
+![Web Audio API](https://img.shields.io/badge/Web_Audio_API-333333?style=for-the-badge&logo=w3c&logoColor=white)
+![Canvas API](https://img.shields.io/badge/HTML5_Canvas-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
+#### وب‌سرور و استقرار (Servers & Infrastructure)
+![Apache](https://img.shields.io/badge/Apache_HTTP_Server-D22128?style=for-the-badge&logo=apache&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux_Compatible-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+
+#### سرویس‌ها و وب‌سرویس‌ها (Services & APIs)
+![ZarinPal](https://img.shields.io/badge/ZarinPal_API_v4-FFD600?style=for-the-badge&logoColor=black)
+![SMS.ir](https://img.shields.io/badge/SMS.ir_UltraFast_OTP-006699?style=for-the-badge&logoColor=white)
+![Map.ir](https://img.shields.io/badge/Map.ir_SDK-2E7D32?style=for-the-badge&logoColor=white)
+![Web Push](https://img.shields.io/badge/Web_Push_(VAPID)-FF5722?style=for-the-badge&logo=w3c&logoColor=white)
+
+#### ابزارها و توسعه (Tools & AI)
+![Developed With AI](https://img.shields.io/badge/Developed_With-AI_Assistance-8A2BE2?style=for-the-badge&logo=openai&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+
+---
+
 ## امکانات و ویژگی‌ها
 
 ### ۱. فروشگاه و سبد خرید
@@ -132,6 +165,39 @@ A modern, lightweight, standalone e-commerce, content management, and gamificati
 - **Mobile-First App Experience:** Smooth bottom sheets, responsive layouts, unified mobile navigation, and native app aesthetics.
 - **Autonomous Theme Management:** Integrated Dark, Light, and System-preferred color palette switching.
 - **Privacy & Security First:** Native firewall, Honeypot detection, Rate Limiting, and protected admin endpoints.
+
+---
+
+### 🛠️ Tech Stack & Infrastructure
+
+#### Backend & Storage
+![PHP](https://img.shields.io/badge/PHP_8+-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
+
+#### Frontend & Browser APIs
+![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3_Modern-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA_Ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
+![Web Audio API](https://img.shields.io/badge/Web_Audio_API-333333?style=for-the-badge&logo=w3c&logoColor=white)
+![Canvas API](https://img.shields.io/badge/HTML5_Canvas-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
+#### Web Servers & Deployment
+![Apache](https://img.shields.io/badge/Apache_HTTP_Server-D22128?style=for-the-badge&logo=apache&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux_Compatible-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+
+#### Integrated Services & APIs
+![ZarinPal](https://img.shields.io/badge/ZarinPal_API_v4-FFD600?style=for-the-badge&logoColor=black)
+![SMS.ir](https://img.shields.io/badge/SMS.ir_UltraFast_OTP-006699?style=for-the-badge&logoColor=white)
+![Map.ir](https://img.shields.io/badge/Map.ir_SDK-2E7D32?style=for-the-badge&logoColor=white)
+![Web Push](https://img.shields.io/badge/Web_Push_(VAPID)-FF5722?style=for-the-badge&logo=w3c&logoColor=white)
+
+#### Tooling & AI
+![Developed With AI](https://img.shields.io/badge/Developed_With-AI_Assistance-8A2BE2?style=for-the-badge&logo=openai&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
