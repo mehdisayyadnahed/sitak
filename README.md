@@ -7,7 +7,6 @@
   <img src="/images/Screenshot_2.png" alt="Universal File Server Screenshot 2" width="400" />
   <img src="/images/Screenshot_1.png" alt="Universal File Server Screenshot 1" width="400" />
 </div>
----
 
 ## فهرست مطالب
 - [معرفی کلی](#معرفی-کلی)
