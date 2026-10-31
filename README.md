@@ -425,11 +425,3 @@ We welcome community feedback, bug reports, and pull requests:
 ## 📄 License
 
 This software is released under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
-
----
-
-<div align="center">
-
-Crafted with ❤️ and AI Assistance for modern web standards.
-
-</div>
