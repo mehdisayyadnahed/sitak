@@ -13,14 +13,13 @@
 [![AI Assisted](https://img.shields.io/badge/Developed%20With-AI%20Assistance-8A2BE2?style=flat-square&logo=openai&logoColor=white)](#-توسعه-با-همراهی-هوش-مصنوعی)
 
 
+[**🇮🇷 مستندات فارسی**](#-معرفی-کلی-سامانه) • [**🇬🇧 English Documentation**](#-english-documentation)
+
 <p align="center">
   <img src="images/Screenshot_2.png" alt="پیش‌نمایش موبایل سای‌تک" width="380" />
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="images/Screenshot_1.png" alt="پیش‌نمایش دسکتاپ سای‌تک" width="380" />
 </p>
-
-
-[گزارش باگ](https://github.com/mehdisayyadnahed/sitak/issues) · [درخواست قابلیت جدید](https://github.com/mehdisayyadnahed/sitak/issues) · [English Documentation](#-english-documentation)
 
 </div>
 
