@@ -4,12 +4,6 @@
 
 **پلتفرم مدرن، سبک، ماژولار و جامع فروشگاهی، محتوایی و گیمیفیکیشن بر پایه Native PHP 8+ و Vanilla JS**
 
-<p align="center">
-  <img src="images/Screenshot_2.png" alt="پیش‌نمایش موبایل سای‌تک" width="380" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="images/Screenshot_1.png" alt="پیش‌نمایش دسکتاپ سای‌تک" width="380" />
-</p>
-
 [![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
 [![Database](https://img.shields.io/badge/Database-MySQL%20%7C%20MariaDB-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-Vanilla%20JS%20%26%20CSS3-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/)
@@ -17,6 +11,14 @@
 [![Push Notifications](https://img.shields.io/badge/Web%20Push-RFC%208291%20%2F%20VAPID-FF5722?style=flat-square&logo=pwa&logoColor=white)](https://datatracker.ietf.org/doc/html/rfc8291)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![AI Assisted](https://img.shields.io/badge/Developed%20With-AI%20Assistance-8A2BE2?style=flat-square&logo=openai&logoColor=white)](#-توسعه-با-همراهی-هوش-مصنوعی)
+
+
+<p align="center">
+  <img src="images/Screenshot_2.png" alt="پیش‌نمایش موبایل سای‌تک" width="380" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="images/Screenshot_1.png" alt="پیش‌نمایش دسکتاپ سای‌تک" width="380" />
+</p>
+
 
 [گزارش باگ](https://github.com/mehdisayyadnahed/sitak/issues) · [درخواست قابلیت جدید](https://github.com/mehdisayyadnahed/sitak/issues) · [English Documentation](#-english-documentation)
 
