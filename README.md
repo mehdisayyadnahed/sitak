@@ -13,7 +13,7 @@
 [![AI Assisted](https://img.shields.io/badge/Developed%20With-AI%20Assistance-8A2BE2?style=flat-square&logo=openai&logoColor=white)](#-توسعه-با-همراهی-هوش-مصنوعی)
 
 
-[**🇮🇷 مستندات فارسی**](#-جدول-مشخصات-و-معماری) • [**🇬🇧 English Documentation**](#-english-documentation)
+[**🇮🇷 مستندات فارسی**](#-جدول-مشخصات-و-معماری-quick-specs) • [**🇬🇧 English Documentation**](#-english-documentation)
 
 <p align="center">
   <img src="images/Screenshot_2.png" alt="پیش‌نمایش موبایل سای‌تک" width="380" />
