@@ -1,0 +1,3 @@
+
+/* Vazirmatn FD (Farsi digits): فونت وزیرمتن با ارقام فارسی، محلی (بدون گوگل فونت) */
+@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:100 900;font-display:swap;src:url('vazirmatn-fd.woff2') format('woff2');unicode-range:U+0020-007E, U+00A0-00FF, U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200F, U+2010-2027, U+2030-205E, U+20AC, U+2122, U+2212, U+2713, U+2705, U+FB50-FDFF, U+FE70-FEFF, U+1EE00-1EEFF}
