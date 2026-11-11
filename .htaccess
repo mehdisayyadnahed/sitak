@@ -1,0 +1,17 @@
+# تنظیمات Apache
+# خطای ۴۰۴ به‌صورت پویا و مستقل از مسیر نصب (mod_rewrite):
+# هر درخواستی که به فایلی/پوشه‌ی واقعی نرسید، صفحه‌ی ۴۰۴.php نمایش داده می‌شود.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ 404.php [L]
+
+# ── محافظت از فایل‌های حساس در برابر دسترسی مستقیم وب ──
+<FilesMatch "^(db-config\.php|install\.lock)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(sql|zip|log|bak|ini|lock|md)$">
+    Require all denied
+</FilesMatch>
+# پوشه‌ی موقت پشتیبان‌گیری هرگز از وب سرو نشود
+RedirectMatch 404 backup-temp
