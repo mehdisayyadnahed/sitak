@@ -53,7 +53,7 @@ $_SESSION['captcha_answer'] = $captcha_n1 + $captcha_n2;
 <div class="overlay" id="regOv" onclick="closeSheet('reg')"></div>
 <div class="sheet" id="regSheet">
   <div class="handle"></div>
-  <div class="sheet-title">🌐 ورود یا ثبت‌نام</div>
+  <div class="sheet-title">ورود یا ثبت‌نام</div>
   <div class="fg">
     <label>شماره موبایل (الزامی)</label>
     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0" value="">

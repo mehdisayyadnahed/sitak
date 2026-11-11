@@ -674,7 +674,6 @@ if ($action === 'roll') {
         echo json_encode(['success' => false, 'message' => 'کاربر یافت نشد.']);
         exit;
     }
-    // بررسی مسدودی — ایمن در برابر noticeها
     $blocked = isset($info['user']['blocked']) ? (int)$info['user']['blocked'] : 0;
     if ($blocked == 1) {
         ob_clean();
@@ -1218,27 +1217,34 @@ if ($action === 'submit_card_payment') {
 // ── Fal Hafez Open ──
 if ($action === 'hafez_open') {
     $phone = ($_SESSION['sitak_user'] ?? '');
+    $registration_required = getSetting($conn, 'hafez_registration_required', '1');
     if (empty($phone)) {
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['success' => false, 'message' => 'ابتدا وارد شوید']);
-        exit;
+        if ($registration_required === '1') {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['success' => false, 'message' => 'ابتدا وارد شوید']);
+            exit;
+        }
+        $phone = sitak_get_guest_id();
     }
 
-    $info = get_user_rolls_info($conn, $phone);
-
-    if (!$info) {
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['success' => false, 'message' => 'کاربر یافت نشد.']);
-        exit;
-    }
-    $blocked = isset($info['user']['blocked']) ? (int)$info['user']['blocked'] : 0;
-    if ($blocked == 1) {
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['success' => false, 'blocked' => true, 'error' => 'access_denied', 'message' => "متاسفانه در حال حاضر امکان انجام این فعالیت وجود ندارد.\nلطفاً در زمانی دیگر مجدداً تلاش کنید."]);
-        exit;
+    $is_guest = !preg_match('/^09[0-9]{9}$/', $phone);
+    $info = null;
+    if (!$is_guest) {
+        $info = get_user_rolls_info($conn, $phone);
+        if (!$info) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['success' => false, 'message' => 'کاربر یافت نشد.']);
+            exit;
+        }
+        $blocked = isset($info['user']['blocked']) ? (int)$info['user']['blocked'] : 0;
+        if ($blocked == 1) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['success' => false, 'blocked' => true, 'error' => 'access_denied', 'message' => "متاسفانه در حال حاضر امکان انجام این فعالیت وجود ندارد.\nلطفاً در زمانی دیگر مجدداً تلاش کنید."]);
+            exit;
+        }
     }
 
     // محاسبه شروع سیکل روزانه (مشابه تاس)

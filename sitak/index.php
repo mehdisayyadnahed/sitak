@@ -76,6 +76,7 @@ $site_name         = getSetting($conn, 'site_name', 'سای‌تک');
 $custom_emoji = getSetting($conn, 'custom_emoji', '🌐');
 $site_slogan       = getSetting($conn, 'site_slogan', 'یک وبسایت تک');
 $hafez_enabled     = getSetting($conn, 'hafez_enabled', '1');
+$hafez_registration_required = getSetting($conn, 'hafez_registration_required', '1');
 $home_hafez_enabled = getSetting($conn, 'hafez_home_enabled', '1');
 $hero_title        = getSetting($conn, 'hero_title', 'جفت ۶ بیار، مهمون ما باش!');
 $footer_copyright = getSetting($conn, 'footer_copyright', '');
@@ -354,9 +355,9 @@ body::before{content:'';position:fixed;top:-40%;right:-20%;width:500px;height:50
 .win-badge{border:1px solid rgba(48,209,88,.22);min-height:28px;display:inline-flex;align-items:center;gap:5px;background:var(--green-bg);color:var(--green-text);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px;vertical-align:middle}
 
 /* Hafez book animation */
-.book-stage{position:relative;width:220px;height:150px;margin:0 auto;perspective:800px;display:flex;align-items:center;justify-content:center}
+.book-stage{position:relative;width:220px;height:182px;margin:0 auto;perspective:800px;display:flex;align-items:center;justify-content:center}
 .book3d{position:relative;width:180px;height:228px;transform-style:preserve-3d;animation:b3Idle 3.2s ease-in-out infinite}
-@keyframes b3Idle{0%,100%{transform:translateY(0) scale(.5)}50%{transform:translateY(-10px) scale(.5)}}
+@keyframes b3Idle{0%,100%{transform:translateY(0) scale(.58)}50%{transform:translateY(-10px) scale(.58)}}
 .b3-page1{position:absolute;top:0;right:0;bottom:0;left:0;transform:translateZ(18px);border-radius:0 20px 20px 0;background:#5e3a18;box-shadow:inset 0 0 20px rgba(0,0,0,.06);backface-visibility:hidden;overflow:hidden}
 .book3d.open-zoom .b3-page1,.book3d.open-done .b3-page1{left:-1px}
 .pg-content{position:absolute;inset:0;padding:12px 0 0;overflow:hidden;text-align:center;display:flex;flex-direction:column;border-radius:0 20px 20px 0;background:#fdf6e3}
@@ -391,10 +392,10 @@ body::before{content:'';position:fixed;top:-40%;right:-20%;width:500px;height:50
 .b3-page1::before{content:'';position:absolute;top:0;bottom:0;left:0;width:14px;background:linear-gradient(to right,#5e3a18 0,#5e3a18 1px,rgba(61,43,31,.45) 1px,rgba(61,43,31,.45) 3px,rgba(61,43,31,.2) 5px,rgba(61,43,31,.07) 9px,transparent 14px);pointer-events:none;z-index:1}
 .bc-in::before{content:'';position:absolute;top:0;bottom:0;right:0;width:14px;background:linear-gradient(to left,#5e3a18 0,#5e3a18 1px,rgba(61,43,31,.45) 1px,rgba(61,43,31,.45) 3px,rgba(61,43,31,.2) 5px,rgba(61,43,31,.07) 9px,transparent 14px);pointer-events:none;z-index:1}
 .book3d.open-zoom{animation:openZoom 2.2s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes openZoom{0%{transform:translateY(0) scale(.5)}20%{transform:translateY(-14px) scale(.58)}36%{transform:translateY(-18px) scale(.63)}68%{transform:translate(40px,-4px) scale(.76)}100%{transform:translate(72px,0) scale(.8)}}
+@keyframes openZoom{0%{transform:translateY(0) scale(.58)}20%{transform:translateY(-14px) scale(.62)}36%{transform:translateY(-18px) scale(.67)}68%{transform:translate(40px,-4px) scale(.74)}100%{transform:translate(72px,0) scale(.8)}}
 .book3d.open-done{animation:none;transform:translate(72px,0) scale(.8)}
 .book3d.open-done .b3-cover{animation:none;transform:translateZ(18px) rotateY(-180deg);box-shadow:none}
-.dice-tray.spread-mode{min-height:215px;transition:min-height .8s ease,border-color .4s,background .35s}
+.dice-tray.spread-mode{transition:border-color .4s,background .35s}
 .glow-burst{position:absolute;inset:0;background:radial-gradient(circle,var(--gold-glow),transparent 65%);opacity:0;pointer-events:none;transition:opacity .6s}
 .glow-burst.flash{opacity:1;animation:glowFade 1.2s ease-out forwards}
 @keyframes glowFade{0%{opacity:0;transform:scale(.6)}40%{opacity:1}100%{opacity:0;transform:scale(1.6)}}
@@ -707,9 +708,10 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
     <?php
       $hafez_box_already = false;
       $hafez_box_verse = null;
-      if ($user_info) {
+      $hafez_check_phone = !empty($phone) ? $phone : ($hafez_registration_required === '0' ? sitak_get_guest_id() : '');
+      if ($hafez_check_phone) {
         $hz_check = $conn->prepare("SELECT hv.* FROM hafez_opens ho JOIN hafez_verses hv ON ho.verse_id = hv.id WHERE ho.user_phone = ? AND ho.opened_at >= ?");
-        $hz_check->bind_param("ss", $phone, $cycle_start_str);
+        $hz_check->bind_param("ss", $hafez_check_phone, $cycle_start_str);
         $hz_check->execute();
         $hafez_box_verse = $hz_check->get_result()->fetch_assoc();
         $hafez_box_already = !!$hafez_box_verse;
@@ -718,7 +720,7 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
 
     <?php if ($hafez_box_already && $hafez_box_verse): ?>
       <!-- قبلاً فال گرفته — نمایش کتاب بازشده -->
-      <div class="dice-tray spread-mode" style="margin-bottom:18px;display:flex;align-items:center;justify-content:center;min-height:178px">
+      <div class="dice-tray spread-mode" style="margin-bottom:18px;display:flex;align-items:center;justify-content:center;height:200px">
         <div class="book-stage">
           <div class="book3d open-done">
             <div class="b3-page1"><div class="pg-content">
@@ -736,7 +738,7 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
         <span id="hafezBtnText">فال دریافت شد ✅</span>
       </button>
     <?php else: ?>
-      <div class="dice-tray" id="hafezTray" style="margin-bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:178px;gap:10px">
+      <div class="dice-tray" id="hafezTray" style="margin-bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px">
         <div class="book-stage" id="hafezStage">
           <div class="glow-burst" id="hafezGlow"></div>
           <div class="book3d" id="hafezBook">
@@ -744,7 +746,6 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
 <div class="b3-cover"><div class="bc-out"><div class="bc-cover-title"><span>فال</span><span>حافظ</span><span>📖</span></div></div><div class="bc-in"><div class="pg-content pg-fade" id="pgTafsir"></div></div></div>
           </div>
         </div>
-        <p id="hafezHint" style="text-align:center;font-size:.8rem;color:var(--text3)">برای دریافت فال امروز، دکمه زیر را بزنید</p>
       </div>
 
       <button class="roll-btn" id="hafezBtn" onclick="handleHafez()" style="width:100%">
@@ -990,6 +991,7 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
    UTILITY
    ═══════════════════════════════════════════════════════════ */
 var USER_PHONE = '<?= addslashes($phone) ?>';
+var HEFEZ_REG_REQUIRED = '<?= $hafez_registration_required ?>';
 var DEFAULT_THEME = '<?= $default_theme ?>';
 var selectedPrizeId = null;
 var isRolling = false;
@@ -1330,7 +1332,7 @@ function playWheelStopSound(){
 var isHafezing=false;
 function handleHafez(){
   if(isHafezing) return;
-  if(!USER_PHONE){ loginFrom='hafez'; openSheet('reg'); return; }
+  if(!USER_PHONE && HEFEZ_REG_REQUIRED==='1'){ loginFrom='hafez'; openSheet('reg'); return; }
   if(document.getElementById('hafezBtn').dataset.done==='1'){showToast('فال امروزت رو قبلاً گرفتی، فردا دوباره سر بزن 📖');return}
   openSheet('intention');
 }
@@ -1344,7 +1346,7 @@ function doHafez(){
   btn.disabled=true;
   document.getElementById('hafezBtnText').textContent='در حال دریافت...';
   var hint=document.getElementById('hafezHint');
-  if(hint){hint.textContent='در حال آماده شدن فال...';hint.style.display=''}
+  if(hint){hint.textContent='';hint.style.display=''}
   var tray=document.getElementById('hafezTray');
   tray.style.display='flex';
   var book=document.getElementById('hafezBook');
@@ -1373,7 +1375,7 @@ function doHafez(){
       if(book){book.classList.remove('open-zoom');book.classList.remove('open-done')}
       tray.classList.remove('spread-mode');
       document.getElementById('hafezBtnText').textContent='📖 دریافت این دوره';
-      if(hint){hint.textContent='برای دریافت فال امروز، دکمه زیر را بزنید';hint.style.display=''}
+      if(hint){hint.textContent='';hint.style.display=''}
       if(d.message) showToast(d.message);
       btn.disabled=false;
     }
@@ -1383,7 +1385,7 @@ function doHafez(){
     if(book){book.classList.remove('open-zoom');book.classList.remove('open-done')}
     tray.classList.remove('spread-mode');
     document.getElementById('hafezBtnText').textContent='📖 دریافت این دوره';
-    if(hint){hint.textContent='برای دریافت فال امروز، دکمه زیر را بزنید';hint.style.display=''}
+    if(hint){hint.textContent='';hint.style.display=''}
     btn.disabled=false;
     showToast('خطا در ارتباط با سرور');
   });

@@ -7,6 +7,7 @@ $captcha_n2 = rand(1, 10);
 $_SESSION['captcha_answer'] = $captcha_n1 + $captcha_n2;
 
 $hafez_enabled = getSetting($conn, 'hafez_enabled', '1');
+$hafez_registration_required = getSetting($conn, 'hafez_registration_required', '1');
 if ($hafez_enabled !== '1') { header('Location: index.php'); exit; }
 track_view($conn, 'hafez');
 
@@ -41,6 +42,17 @@ if (!empty($phone)) {
     // ط¨ط±ط±ط³غŒ ط¢غŒط§ ط§ظ…ط±ظˆط² ظپط§ظ„ ط¨ط§ط² ع©ط±ط¯ظ‡
     $check = $conn->prepare("SELECT hv.* FROM hafez_opens ho JOIN hafez_verses hv ON ho.verse_id = hv.id WHERE ho.user_phone = ? AND DATE(ho.opened_at) = ?");
     $check->bind_param("ss", $phone, $today);
+    $check->execute();
+    $today_verse = $check->get_result()->fetch_assoc();
+    if ($today_verse) {
+        $already_opened = true;
+        $user_todays_verse_id = $today_verse['id'];
+    }
+} elseif ($hafez_registration_required === '0') {
+    // کاربر غیرلاگین + ثبت‌نام اجباری نیست — بررسی فال امروز از طریق کوکی مهمان
+    $guest_id = sitak_get_guest_id();
+    $check = $conn->prepare("SELECT hv.* FROM hafez_opens ho JOIN hafez_verses hv ON ho.verse_id = hv.id WHERE ho.user_phone = ? AND DATE(ho.opened_at) = ?");
+    $check->bind_param("ss", $guest_id, $today);
     $check->execute();
     $today_verse = $check->get_result()->fetch_assoc();
     if ($today_verse) {
@@ -236,14 +248,33 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
     </div>
   </div>
 
-  <?php if (empty($phone)): ?>
-    <!-- Not logged in -->
+  <?php if (empty($phone) && $hafez_registration_required === '1'): ?>
+    <!-- Not logged in — registration required -->
     <div class="login-card">
       <div style="font-size:2.5rem;margin-bottom:10px">ًں”’</div>
       <h3>ط¨ط±ط§غŒ ظپط§ظ„ ط­ط§ظپط¸ ظˆط§ط±ط¯ ط´ظˆغŒط¯</h3>
       <p>ط§ط¨طھط¯ط§ ط¨ط§غŒط¯ ظˆط§ط±ط¯ ط­ط³ط§ط¨ ط®ظˆط¯ ط´ظˆغŒط¯ طھط§ ط¨طھظˆط§ظ†غŒط¯ ظپط§ظ„ ط±ظˆط²ط§ظ†ظ‡ ط®ظˆط¯ ط±ط§ ط¯ط±غŒط§ظپطھ ع©ظ†غŒط¯</p>
       <button type="button" class="btn" onclick="openSheet('reg')">ورود / ثبت‌نام</button>
     </div>
+
+  <?php elseif (empty($phone) && $hafez_registration_required === '0'): ?>
+    <!-- Not logged in — registration optional -->
+    <?php if (!$already_opened): ?>
+    <button class="open-btn" id="openBtn" onclick="openFortune()">📖 فال حافظ امروز را بگیرید</button>
+    <?php else: ?>
+    <div class="verse-card">
+      <div class="quran-icon">📚</div>
+      <div class="verse-text"><?= nl2br(htmlspecialchars(implode("\n", verse_parts($today_verse)), ENT_QUOTES, 'UTF-8')) ?></div>
+      <div class="meaning-box">
+        <h4>تفسیر فال</h4>
+        <p><?= nl2br(htmlspecialchars($today_verse['meaning_short'], ENT_QUOTES, 'UTF-8')) ?></p>
+      </div>
+    </div>
+    <div class="already-msg">
+      <div class="icon">✅</div>
+      <p>فال امروز شما از قبل باز شده است. فردا مجدداً available خواهد بود.</p>
+    </div>
+    <?php endif; ?>
 
   <?php elseif ($already_opened && $today_verse): ?>
     <!-- Already opened today -->
@@ -308,7 +339,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 
 <script>
 var DEFAULT_THEME='<?= $default_theme ?>';
-var USER_PHONE='<?= addslashes($phone) ?>';
+var USER_PHONE='<?= addslashes(!empty($phone) ? $phone : ($hafez_registration_required === '0' ? sitak_get_guest_id() : '')) ?>';
 var IS_OPENED=<?= $already_opened ? 'true' : 'false' ?>;
 
 (function(){var s=(window.__R||function(v){return v})(localStorage.getItem('sitak_theme')||DEFAULT_THEME);document.documentElement.setAttribute('data-theme',s);updThemeIcon(s)})();

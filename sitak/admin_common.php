@@ -967,8 +967,9 @@ if ($is_authenticated && isset($_POST['save_chance_settings'])) {
     $dice_home_enabled   = isset($_POST['dice_home_enabled']) ? '1' : '0';
     $hafez_enabled       = isset($_POST['hafez_enabled']) ? '1' : '0';
     $hafez_home_enabled  = isset($_POST['hafez_home_enabled']) ? '1' : '0';
+    $hafez_registration_required = isset($_POST['hafez_registration_required']) ? '1' : '0';
     $daily_roll_count_post = (string)max(0, min(50, (int)preg_replace('/[^0-9]/', '', (string)($_POST['daily_roll_count'] ?? '1'))));
-    foreach (['daily_roll_count'=>$daily_roll_count_post, 'chance_enabled'=>$chance_enabled, 'dice_enabled'=>$dice_enabled, 'dice_home_enabled'=>$dice_home_enabled, 'hafez_enabled'=>$hafez_enabled, 'hafez_home_enabled'=>$hafez_home_enabled, 'chance_title'=>trim($_POST['chance_title'] ?? ''), 'chance_description'=>trim($_POST['chance_description'] ?? '')] as $ck=>$cv) {
+    foreach (['daily_roll_count'=>$daily_roll_count_post, 'chance_enabled'=>$chance_enabled, 'dice_enabled'=>$dice_enabled, 'dice_home_enabled'=>$dice_home_enabled, 'hafez_enabled'=>$hafez_enabled, 'hafez_home_enabled'=>$hafez_home_enabled, 'hafez_registration_required'=>$hafez_registration_required, 'chance_title'=>trim($_POST['chance_title'] ?? ''), 'chance_description'=>trim($_POST['chance_description'] ?? '')] as $ck=>$cv) {
         $s = $conn->prepare("UPDATE settings SET value_data = ? WHERE key_name = ?");
         $s->bind_param("ss", $cv, $ck); $s->execute();
     }

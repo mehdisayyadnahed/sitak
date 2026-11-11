@@ -24,6 +24,7 @@ if ($editing_hid > 0) {
 }
 $hafez_enabled = getSetting($conn, 'hafez_enabled', '1');
 $hafez_home_enabled = getSetting($conn, 'hafez_home_enabled', '1');
+$hafez_registration_required = getSetting($conn, 'hafez_registration_required', '1');
 $chance_enabled = getSetting($conn, 'chance_enabled', '1');
 $dice_enabled = getSetting($conn, 'dice_enabled', '1');
 $dice_home_enabled = getSetting($conn, 'dice_home_enabled', '1');
@@ -394,6 +395,10 @@ $sel_prize_name = $sel_prize_hex !== '' ? $prize_color_names[$sel_prize_hex] : '
       <div class="toggle-row">
         <label class="toggle"><input type="checkbox" name="hafez_enabled" value="1" <?= $hafez_enabled==='1'?'checked':'' ?>><span class="slider"></span></label>
         <span class="toggle-label">بخش فال در سایت فعال باشد</span>
+      </div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" name="hafez_registration_required" value="1" <?= $hafez_registration_required==='1'?'checked':'' ?>><span class="slider"></span></label>
+        <span class="toggle-label">اجباری بودن ثبت‌نام برای فال گرفتن</span>
       </div>
       <div class="toggle-row">
         <label class="toggle"><input type="checkbox" name="chance_enabled" value="1" <?= $chance_enabled==='1'?'checked':'' ?>><span class="slider"></span></label>

@@ -115,6 +115,10 @@ if (file_exists(__DIR__ . '/db-config.php')) {
 $conn = new mysqli($db_host, $db_user, $db_pass);
 
 if ($conn->connect_error) {
+    if (strpos($_SERVER['SCRIPT_NAME'] ?? '', 'ajax.php') !== false) {
+        header('Content-Type: application/json; charset=utf-8');
+        die(json_encode(['success' => false, 'message' => 'خطای سرور: ' . $conn->connect_error], JSON_UNESCAPED_UNICODE));
+    }
     die("اتصال به پایگاه‌داده برقرار نشد: " . $conn->connect_error);
 }
 // اتصال با utf8mb4 تا ایموجی‌ها (کاراکترهای ۴ بایتی) بدون خطای بی‌صدا ذخیره شوند
@@ -1178,6 +1182,18 @@ function get_loyalty_dice_html($visits, $target_dice) {
 function mask_phone($phone) {
     if (strlen($phone) < 11) return $phone;
     return substr($phone, 0, 4) . '***' . substr($phone, -4);
+}
+
+// شناسنده‌ی مهمان برای کاربران غیرلاگین — استفاده از کوکی
+function sitak_get_guest_id() {
+    if (!empty($_SESSION['sitak_user'])) return $_SESSION['sitak_user'];
+    $cookie_name = 'sitak_guest';
+    $guest_id = $_COOKIE[$cookie_name] ?? '';
+    if ($guest_id === '' || !preg_match('/^g[a-f0-9]{12}$/', $guest_id)) {
+        $guest_id = 'g' . bin2hex(random_bytes(6));
+        setcookie($cookie_name, $guest_id, time() + 365 * 24 * 3600, '/', '', false, true);
+    }
+    return $guest_id;
 }
 
 // سیستم شبیه‌سازی هوشمند برندگان فیک — قابل کنترل از پنل ادمین
