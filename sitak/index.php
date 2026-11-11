@@ -496,9 +496,12 @@ body::before{content:'';position:fixed;top:-40%;right:-20%;width:500px;height:50
 .surprise-ov.open{display:flex}
 .toast{pointer-events:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--gold,#ecb534),var(--gold-dark,#c49625));border:none;color:#fff;padding:13px 22px;border-radius:16px;font-size:.82rem;font-weight:500;z-index:500;opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);max-width:min(88%,420px);text-align:center;box-shadow:var(--shadow-lg);white-space:pre-line}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .app-footer{text-align:center;padding:28px 16px 20px;border-top:1px solid var(--border);margin-top:16px;background:var(--bg);transition:background .35s}
-.app-footer p{font-size:.72rem;color:var(--text3);margin-bottom:10px}
 .f-links{display:flex;justify-content:center;gap:18px;margin:10px 0}
-.f-links a{font-size:.75rem;color:var(--text2);text-decoration:none;transition:color .2s}.f-links a:hover{color:var(--gold-dark)}
+.f-links a{font-size:.75rem;font-weight:500;color:var(--text2);text-decoration:none;transition:color .2s}.f-links a:hover{color:var(--gold-dark)}
+.f-info{margin:10px 0;font-size:.8rem;font-weight:500;color:var(--text2);text-align:center;line-height:1.7}
+.f-info a{color:var(--text2);text-decoration:none;transition:color .2s}
+.f-info a:hover{color:var(--gold-dark)}
+.dev-credit{text-align:center;font-size:.8rem;font-weight:500;color:var(--text2);line-height:2;padding:6px 14px 22px;border-top:1px solid var(--border);margin-top:16px}
 .hidden{display:none!important}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:8px 0;padding-bottom:calc(8px + var(--safe-b));border-top-left-radius:16px;border-top-right-radius:16px}.bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--text2);text-decoration:none;font-size:.6rem;min-width:44px;min-height:44px;padding:4px 0;transition:color .2s;white-space:nowrap}.bottom-nav a.active{color:var(--gold-dark)}.bottom-nav svg{width:22px;height:22px;transition:transform .2s}.bottom-nav a.active svg{color:var(--gold-dark);transform:scale(1.1)}@media(max-width:400px){.bottom-nav a{font-size:.55rem;min-width:38px;padding:2px 0}}
 
@@ -860,12 +863,12 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
       <?php if($contact_telegram):?><a href="<?=htmlspecialchars($contact_telegram,ENT_QUOTES,'UTF-8')?>" target="_blank">تلگرام</a><?php endif;?>
       <?php if($contact_youtube):?><a href="<?=htmlspecialchars($contact_youtube,ENT_QUOTES,'UTF-8')?>" target="_blank">یوتیوب</a><?php endif;?>
     </div>
-    <?php if($contact_phone):?><p style="margin:10px 0;font-size:.78rem;text-align:center"><a href="tel:<?=htmlspecialchars($contact_phone,ENT_QUOTES,'UTF-8')?>" style="color:var(--text2);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold-dark)'" onmouseout="this.style.color='var(--text2)'">📞 <?= htmlspecialchars($contact_phone, ENT_QUOTES, 'UTF-8') ?></a></p><?php endif;?>
+    <?php if($contact_phone):?><p class="f-info"><a href="tel:<?=htmlspecialchars($contact_phone,ENT_QUOTES,'UTF-8')?>">📞 <?= htmlspecialchars($contact_phone, ENT_QUOTES, 'UTF-8') ?></a></p><?php endif;?>
     <?php if ($contact_address): ?>
-    <p style="margin:10px 0;font-size:.78rem;color:var(--text2);text-align:center;line-height:1.7">📍 <?= htmlspecialchars($contact_address, ENT_QUOTES, 'UTF-8') ?></p>
+    <p class="f-info">📍 <?= htmlspecialchars($contact_address, ENT_QUOTES, 'UTF-8') ?></p>
     <?php endif; ?>
     <?php if ($footer_copyright_enabled === '1' && $footer_copyright !== ''): ?>
-    <p style="margin:10px 0;font-size:.78rem;color:var(--text2);text-align:center;line-height:1.7"><?= htmlspecialchars($footer_copyright, ENT_QUOTES, 'UTF-8') ?></p>
+    <p class="f-info"><?= htmlspecialchars($footer_copyright, ENT_QUOTES, 'UTF-8') ?></p>
     <?php endif; ?>
   </footer>
 
@@ -898,9 +901,9 @@ section.card .post-meta > span{min-width:0;overflow:hidden;text-overflow:ellipsi
     <?php endif; ?>
   </div>
   <?php endif; ?>
-  <div class="dev-credit" style="text-align:center;font-size:.8rem;color:var(--text2);line-height:2;padding:6px 14px 22px">
-    <div>توسعه و پشتیبانی توسط «<a href="https://mehdisayyadnahed.ir/" target="_blank" rel="noopener" style="color:var(--gold-dark);font-weight:700;text-decoration:none">مهدی صیادناهد</a>»</div>
-    <div>ارسال پیشنهاد بهبود و توسعه‌ی این نرم‌افزار در <a href="https://github.com/mehdisayyadnahed/sitak" target="_blank" rel="noopener" style="color:var(--gold-dark);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;vertical-align:middle">Github<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="gh-logo" style="flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a></div>
+  <div class="dev-credit">
+    <div>توسعه و پشتیبانی توسط «<a href="https://mehdisayyadnahed.ir/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:none">مهدی صیادناهد</a>»</div>
+    <div>ارسال پیشنهاد بهبود و توسعه‌ی این نرم‌افزار در <a href="https://github.com/mehdisayyadnahed/sitak" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:none;display:inline-flex;align-items:center;gap:4px;vertical-align:middle">Github<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" class="gh-logo" style="flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a></div>
   </div>
 </main>
 

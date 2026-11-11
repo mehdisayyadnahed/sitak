@@ -128,7 +128,7 @@ admin_header();
   </div>
   <?php endif; ?>
 
-
+  <div class="sitak-ver">سای‌تک - نسخه ۱.۰</div>
 </div>
 
 <script>
