@@ -1842,7 +1842,7 @@ body::before{content:\'\';position:fixed;top:-30%;right:-15%;width:400px;height:
 @media(max-width:400px){.ab-title{font-size:.82rem}.btn-sm{padding:6px 10px;font-size:.7rem}}
 
 .container{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:14px 14px 96px}
-.sitak-ver{border-top:1px solid var(--border);margin:18px 0 8px;padding-top:10px;text-align:center;font-size:.8rem;font-weight:500;color:var(--text3)}
+.dev-credit{text-align:center;font-size:.8rem;font-weight:500;color:var(--text2);line-height:2;padding:6px 14px 22px;border-top:1px solid var(--border);margin-top:16px}
 .sec-title{font-size:1rem;font-weight:700;margin:22px 0 10px;color:var(--text);display:flex;align-items:center;gap:8px}
 .acc-hdr{background:var(--card);border:1px solid var(--border-gold);padding:13px 16px;border-radius:var(--rs);cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-top:18px;transition:background .2s,border-color .3s;user-select:none;box-shadow:var(--shadow-sm)}
 .acc-hdr:hover{background:var(--card-el)}
